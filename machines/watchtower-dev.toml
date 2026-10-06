@@ -1,0 +1,9 @@
+[laptop]
+vcpus=2
+ram_gb=4
+[green-pc]
+vcpus=4
+ram_gb=8
+[red-pc]
+vcpus=2
+ram_gb=4
