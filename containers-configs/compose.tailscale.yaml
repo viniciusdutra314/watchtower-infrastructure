@@ -1,0 +1,27 @@
+services:
+    tailscale:
+        container_name: tailscale
+        network_mode: host
+        restart: always
+        image: tailscale/tailscale
+        cap_add:
+            - NET_ADMIN
+            - SYS_MODULE
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/tailscale
+              target: /var/lib/tailscale
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: /dev/net/tun
+              target: /dev/net/tun
+              bind:
+                  create_host_path: false
+        environment:
+            - TS_AUTH_ONCE=true
+            - TS_EXTRA_ARGS=--advertise-tags=tag:container --accept-routes --accept-dns
+            - TS_STATE_DIR=/var/lib/tailscale
+            - TS_HOSTNAME=dutraserver
+        env_file:
+            - ../.env.tailscale

@@ -1,0 +1,29 @@
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest@sha256:ab401a0f361cfad328e444838b13d5b334b189d0f556fc91a3623eb581df36df
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:6564af85578254728a9b06ded12836d2773e56f0da703c317cb589b176c4e215
+  database:
+    image: ghcr.io/immich-app/postgres@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest@sha256:139dfee1c6f89249c8d665d1333a42e8ec74ec0a86bc6bb1c8461e10d3a66a47
+  immich-machine-learning:
+    image: ghcr.io/immich-app/immich-machine-learning:v3@sha256:d76fe88b69282c09a97eac4f82dafa82cfd77bce274bc742591cde974f87dacb
+  immich-server:
+    image: ghcr.io/immich-app/immich-server:v3@sha256:c716dc20f957aafd89fa9d284a2ec63e25c9e2d8d8e87c6197d540a3dce237db
+  jellyfin:
+    image: docker.io/linuxserver/jellyfin:latest@sha256:b8dcc7b71d0ea872b74314da4b995c0cf282b1778438c295996e7be88c70fdda
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:2f3d31307beba3ba2dd226d191f5f5c14ee3b4d8b49277c64683f5ed97083179
+  qbittorrent:
+    image: docker.io/linuxserver/qbittorrent:latest@sha256:b024436f8ca665d16d9a997d26fd27fdf867ee5566ba09f32764e7b2976d3e02
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest@sha256:e35056574cdc695a9ee745aa1ecda9eab3842450bf4b7b8471b023790fa3861d
+  redis:
+    image: docker.io/valkey/valkey@sha256:4963247afc4cd33c7d3b2d2816b9f7f8eeebab148d29056c2ca4d7cbc966f2d9
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest@sha256:24acea2956a0ccb11f103877d9f4f8576600fb34bff34820ed749c2256dab89f
+  tailscale:
+    image: docker.io/tailscale/tailscale:latest@sha256:f15d5d3f4a68773a853180b72496f70ba614b64de0878c43fe3da39fe0afba47
+  unmanic:
+    image: docker.io/josh5/unmanic:latest@sha256:3751881e8129e412c64453e6d11ff3fb1469121eeb271c73ad63f925a9f5c910

@@ -1,0 +1,183 @@
+services:
+    unmanic:
+        container_name: unmanic
+        image: josh5/unmanic:latest
+        ports:
+            - 8888:8888
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - UMASK=022
+        restart: always
+        volumes:
+            - type: bind
+              target: /config
+              source: ${APPDATA_PATH}/unmanic/config
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: ${ARR_HDD}
+              target: /old_hdd
+              bind:
+                  create_host_path: false
+    cleanuparr:
+        image: ghcr.io/cleanuparr/cleanuparr:latest
+        container_name: cleanuparr
+        ports:
+            - 11011:11011
+        restart: always
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/cleanuparr/
+              target: /config
+              bind:
+                  create_host_path: false
+        environment:
+            - PORT=11011
+            - BASE_PATH=
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - UMASK=022
+            - TZ=${TZ}
+    prowlarr:
+        image: lscr.io/linuxserver/prowlarr:latest
+        container_name: prowlarr
+        ports:
+            - 9696:9696
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=022
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/prowlarr/
+              target: /config
+              bind:
+                  create_host_path: false
+        restart: always
+
+    flaresolverr:
+        image: ghcr.io/flaresolverr/flaresolverr:latest
+        container_name: flaresolverr
+        environment:
+            - LOG_LEVEL=${LOG_LEVEL:-info}
+            - LOG_HTML=${LOG_HTML:-false}
+            - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+            - TZ=${TZ}
+            - UMASK=022
+        restart: always
+
+    qbittorrent:
+        image: linuxserver/qbittorrent:latest
+        container_name: qbittorrent
+        restart: always
+        ports:
+            - 8080:8080
+        environment:
+            - TZ=${TZ}
+            - WEBUI_PORT=8080
+            - TORRENTING_PORT=6881
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - UMASK=022
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/qbittorrent/config
+              target: /config
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: ${ARR_HDD}
+              target: /old_hdd
+              bind:
+                  create_host_path: false
+    jellyfin:
+        image: linuxserver/jellyfin:latest
+        restart: always
+        container_name: jellyfin
+        environment:
+            - TZ=${TZ}
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - UMASK=022
+        volumes:
+            - type: bind
+              source: ${ARR_HDD}
+              target: /old_hdd
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: ${APPDATA_PATH}/jellyfin/config
+              target: /config
+              bind:
+                  create_host_path: false
+        ports:
+            - 8096:8096
+    sonarr:
+        image: lscr.io/linuxserver/sonarr:latest
+        container_name: sonarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=022
+        ports:
+            - 8989:8989
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/sonarr
+              target: /config
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: ${ARR_HDD}
+              target: /old_hdd
+              bind:
+                  create_host_path: false
+        restart: always
+
+    radarr:
+        image: lscr.io/linuxserver/radarr:latest
+        container_name: radarr
+        ports:
+            - 7878:7878
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=022
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/radarr
+              target: /config
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: ${ARR_HDD}
+              target: /old_hdd
+              bind:
+                  create_host_path: false
+        restart: always
+    bazarr:
+        image: lscr.io/linuxserver/bazarr:latest
+        container_name: bazarr
+        ports:
+            - 6767:6767
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=022
+        volumes:
+            - type: bind
+              source: ${APPDATA_PATH}/bazarr
+              target: /config
+              bind:
+                  create_host_path: false
+            - type: bind
+              source: ${ARR_HDD}
+              target: /old_hdd
+              bind:
+                  create_host_path: false
+        restart: always
