@@ -3,9 +3,9 @@ name: dutra-server
 include:
     - path: ./compose.arr.yaml
       env_file: ../.env
-    - path: ./compose.immich.yaml
-      env_file: ../.env
-    - path: ./compose.nextcloud.yaml
-      env_file: ../.env
-    - path: ./compose.tailscale.yaml
-      env_file: ../.env
+   # - path: ./compose.immich.yaml
+    #  env_file: ../.env
+    #- path: ./compose.nextcloud.yaml
+    #  env_file: ../.env
+    #- path: ./compose.tailscale.yaml
+    #  env_file: ../.env
