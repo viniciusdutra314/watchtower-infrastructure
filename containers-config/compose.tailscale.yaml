@@ -22,6 +22,6 @@ services:
             - TS_AUTH_ONCE=true
             - TS_EXTRA_ARGS=--advertise-tags=tag:container --accept-routes --accept-dns
             - TS_STATE_DIR=/var/lib/tailscale
-            - TS_HOSTNAME=dutraserver
+            - TS_HOSTNAME=watchtower-services
         env_file:
-            - ../.env.tailscale
+            - ../../secrets/.env.tailscale

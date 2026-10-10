@@ -1,11 +1,11 @@
-name: dutra-server
+name: watchtower-services
 
 include:
     - path: ./compose.arr.yaml
-      env_file: ../.env
+      env_file: ../../secrets/.env
    # - path: ./compose.immich.yaml
     #  env_file: ../.env
     #- path: ./compose.nextcloud.yaml
     #  env_file: ../.env
-    #- path: ./compose.tailscale.yaml
-    #  env_file: ../.env
+    - path: ./compose.tailscale.yaml
+      env_file: ../../secrets/.env
