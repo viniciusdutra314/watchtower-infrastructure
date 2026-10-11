@@ -12,33 +12,14 @@ services:
         volumes:
             - type: bind
               target: /config
-              source: ${APPDATA_PATH}/unmanic/config
+              source: ${STATE_ROOT}/unmanic/config
               bind:
                   create_host_path: false
             - type: bind
-              source: ${ARR_HDD}
+              source: ${LIBRARY_ROOT}
               target: /old_hdd
               bind:
                   create_host_path: false
-    cleanuparr:
-        image: ghcr.io/cleanuparr/cleanuparr:latest
-        container_name: cleanuparr
-        ports:
-            - 11011:11011
-        restart: always
-        volumes:
-            - type: bind
-              source: ${APPDATA_PATH}/cleanuparr/
-              target: /config
-              bind:
-                  create_host_path: false
-        environment:
-            - PORT=11011
-            - BASE_PATH=
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - UMASK=022
-            - TZ=${TZ}
     prowlarr:
         image: lscr.io/linuxserver/prowlarr:latest
         container_name: prowlarr
@@ -51,7 +32,7 @@ services:
             - UMASK=022
         volumes:
             - type: bind
-              source: ${APPDATA_PATH}/prowlarr/
+              source: ${STATE_ROOT}/prowlarr/
               target: /config
               bind:
                   create_host_path: false
@@ -83,12 +64,12 @@ services:
             - UMASK=022
         volumes:
             - type: bind
-              source: ${APPDATA_PATH}/qbittorrent/config
+              source: ${STATE_ROOT}/qbittorrent/config
               target: /config
               bind:
                   create_host_path: false
             - type: bind
-              source: ${ARR_HDD}
+              source: ${LIBRARY_ROOT}
               target: /old_hdd
               bind:
                   create_host_path: false
@@ -103,12 +84,12 @@ services:
             - UMASK=022
         volumes:
             - type: bind
-              source: ${ARR_HDD}
+              source: ${LIBRARY_ROOT}
               target: /old_hdd
               bind:
                   create_host_path: false
             - type: bind
-              source: ${APPDATA_PATH}/jellyfin/config
+              source: ${STATE_ROOT}/jellyfin/config
               target: /config
               bind:
                   create_host_path: false
@@ -126,12 +107,12 @@ services:
             - 8989:8989
         volumes:
             - type: bind
-              source: ${APPDATA_PATH}/sonarr
+              source: ${STATE_ROOT}/sonarr
               target: /config
               bind:
                   create_host_path: false
             - type: bind
-              source: ${ARR_HDD}
+              source: ${LIBRARY_ROOT}
               target: /old_hdd
               bind:
                   create_host_path: false
@@ -149,12 +130,12 @@ services:
             - UMASK=022
         volumes:
             - type: bind
-              source: ${APPDATA_PATH}/radarr
+              source: ${STATE_ROOT}/radarr
               target: /config
               bind:
                   create_host_path: false
             - type: bind
-              source: ${ARR_HDD}
+              source: ${LIBRARY_ROOT}
               target: /old_hdd
               bind:
                   create_host_path: false
@@ -171,12 +152,12 @@ services:
             - UMASK=022
         volumes:
             - type: bind
-              source: ${APPDATA_PATH}/bazarr
+              source: ${STATE_ROOT}/bazarr
               target: /config
               bind:
                   create_host_path: false
             - type: bind
-              source: ${ARR_HDD}
+              source: ${LIBRARY_ROOT}
               target: /old_hdd
               bind:
                   create_host_path: false

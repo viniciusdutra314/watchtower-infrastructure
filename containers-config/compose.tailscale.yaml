@@ -9,7 +9,7 @@ services:
             - SYS_MODULE
         volumes:
             - type: bind
-              source: ${APPDATA_PATH}/tailscale
+              source: ${STATE_ROOT}/tailscale
               target: /var/lib/tailscale
               bind:
                   create_host_path: false

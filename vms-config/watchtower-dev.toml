@@ -1,9 +1,0 @@
-[laptop]
-vcpus=2
-ram_gb=4
-[watchtower_main]
-vcpus=8
-ram_gb=10
-[family_pc]
-vcpus=2
-ram_gb=4
