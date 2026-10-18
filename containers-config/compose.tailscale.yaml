@@ -2,7 +2,7 @@ services:
     tailscale:
         container_name: tailscale
         network_mode: host
-        restart: always
+        restart: on-failure
         image: tailscale/tailscale
         cap_add:
             - NET_ADMIN
