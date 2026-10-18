@@ -24,4 +24,4 @@ services:
             - TS_STATE_DIR=/var/lib/tailscale
             - TS_HOSTNAME=watchtower-services
         env_file:
-            - ../../secrets/.env.tailscale
+            - /mnt/watchtower-core/secrets/.env.tailscale

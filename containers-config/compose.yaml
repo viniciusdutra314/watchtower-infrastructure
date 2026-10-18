@@ -2,10 +2,10 @@ name: watchtower-services
 
 include:
     - path: ./compose.tailscale.yaml
-      env_file: ../../secrets/.env
+      env_file: /mnt/watchtower-core/secrets/.env
     - path: ./compose.arr.yaml
-      env_file: ../../secrets/.env
+      env_file: /mnt/watchtower-core/secrets/.env
     - path: ./compose.immich.yaml
-      env_file:  ../../secrets/.env
+      env_file: /mnt/watchtower-core/secrets/.env
     #- path: ./compose.nextcloud.yaml
     #  env_file:  ../../secrets/.env
