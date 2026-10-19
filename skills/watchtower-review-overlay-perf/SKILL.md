@@ -9,12 +9,12 @@ Aplique esta metodologia quando a **Watchtower Review** identificar questões de
 
 ## Investigação
 
-1. Examine o diff entre alvo **A** (padrão `HEAD`) e base **B** (padrão `A^`), conforme definidos pela Review. Identifique a hipótese de otimização e as métricas que poderiam confirmá-la.
+1. Examine o escopo definido pela Review: diff entre commits **B → A** ou alterações **não commitadas**, inclusive as produzidas pela Watchtower Implement. Identifique a hipótese de otimização e as métricas que poderiam confirmá-la. Para alterações locais, compare o estado anterior documentado com o estado atual; não suponha que `HEAD` represente esse estado se já havia mudanças pendentes.
 2. Compare builds isolados e equivalentes das duas versões, preferencialmente de produção, com as mesmas flags, dependências e condições. Preserve a worktree principal e o trabalho preexistente. **Não crie ou troque worktrees sem autorização**; use cópias isoladas do código/build quando possível.
 3. Reutilize benchmarks do projeto quando adequados; caso contrário, crie benchmarks temporários com entradas representativas. Verifique a corretude dos resultados e se as versões realizam trabalho equivalente antes de comparar tempos.
 4. Prepare builds e ferramentas antes de medir; não inclua instalação via Nix, compilação ou preparação no tempo medido, salvo quando forem o objeto da investigação. Faça warm-up quando necessário, repita medições e **alterne as versões** para reduzir efeitos de ordem. **Nunca meça simultaneamente**: a Watchtower compartilha recursos.
 5. Compare valores absolutos, diferenças relativas e dispersão; considere ruído, variação do ambiente e tamanho da amostra. Gere gráficos comparativos quando úteis e conclua: **melhoria**, **regressão**, **resultado misto** ou **inconclusivo**.
-6. Quando ajudar a explicar os resultados, inspecione LLVM IR, outra representação intermediária ou assembly (por exemplo, inlining e vetorização). Prefira IR para entender transformações independentes de detalhes da ISA.
+6. Quando ajudar a explicar os resultados, inspecione LLVM IR, outra representação intermediária ou assembly (por exemplo, inlining e vetorização). Prefira IR para entender transformações independentes de detalhes da ISA, mas **não suponha** que o comportamento ou o desempenho seja igual em todos os targets. Código gerado não substitui medições.
 7. Se uma correção localizada for proposta pela Review, meça também a versão corrigida quando pertinente, distinguindo-a claramente do alvo original. Repita verificações afetadas pela correção.
 
 ## Ferramentas
