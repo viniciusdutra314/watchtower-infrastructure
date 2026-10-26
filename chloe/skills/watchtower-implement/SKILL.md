@@ -1,6 +1,6 @@
 ---
 name: watchtower-implement
-description: Implementa tarefas atribuídas à Chloe numa Informal Spec, em uma Git worktree isolada; entrega código revisável, implementation-report.md e aciona a Watchtower Review ao terminar.
+description: Implementa tarefas atribuídas à Chloe numa Informal Spec, em Git worktree isolada por padrão ou in-place com autorização explícita; entrega código revisável, implementation-report.md e aciona a Watchtower Review ao terminar.
 ---
 
 # Watchtower Implement
@@ -11,8 +11,9 @@ Implemente **somente as tarefas atribuídas à Chloe** na Informal Spec indicada
 
 - **Informal Spec:** caminho ou nome aproximado de um arquivo em `.watchtower/specs/` da worktree principal. Use `git worktree list --porcelain` para encontrá-la. Tolere nomes aproximados somente quando a correspondência for inequívoca; se houver ambiguidade, peça esclarecimento. Se a versão local divergir da principal, esclareça qual usar. A spec é somente leitura.
 - **Escopo adicional (opcional):** o pedido atual pode priorizar um subconjunto das tarefas da Chloe, sem transferir tarefas do Vinícius por inferência.
-- **Pré-condição:** verifique `git rev-parse --show-toplevel` e `git worktree list --porcelain`. **Interrompa se estiver na worktree principal ou fora de uma worktree vinculada.** Não crie nem troque de worktree automaticamente.
-- Registre alterações preexistentes antes de editar. Não as sobrescreva nem atribua a si mudanças anteriores; se não for possível separar os trabalhos com segurança, peça orientação.
+- **Modo de trabalho (opcional):** por padrão, implemente numa worktree isolada. O modo **in-place**, diretamente na worktree principal, exige autorização explícita do usuário para a tarefa atual. Não presuma essa autorização.
+- **Pré-condição:** verifique `git rev-parse --show-toplevel` e `git worktree list --porcelain`. **Interrompa se estiver na worktree principal sem autorização explícita para in-place ou fora de uma worktree válida.** Não crie nem troque de worktree automaticamente.
+- Registre alterações preexistentes antes de editar. No modo in-place, registre o SHA inicial do HEAD e **recomende uma árvore limpa**: se houver alterações não commitadas, sugira que o Vinícius faça um commit, inclusive WIP, antes de prosseguir. Só trabalhe numa árvore dirty mediante autorização adicional explícita.
 
 ## Implementação
 
@@ -25,7 +26,7 @@ Implemente **somente as tarefas atribuídas à Chloe** na Informal Spec indicada
 7. **Todo comportamento importante deve ter testes**. Cubra casos normais, limites e falhas; mantenha testes legíveis, exemplos pequenos e expectativas explícitas. Execute as verificações pertinentes e não alegue ter executado as que não rodou.
 8. Escreva código **orientado à revisão**: nomes claros, organização simples e comentários que expliquem decisões, invariantes, trechos não triviais e referências realmente consultadas. Explique o *porquê*, não cada instrução óbvia. O Vinícius decidirá quais comentários preservar no commit.
 
-Não modifique a worktree principal, não faça staging, commits, merge ou push e não integre alterações por conta própria.
+Não modifique a worktree principal sem autorização explícita para in-place. Não faça staging, commits, merge ou push e não integre alterações por conta própria.
 
 ## Entrega
 
@@ -47,9 +48,3 @@ O `implementation-report.md` deve ser independente e escrito **como a descriçã
 5. **Pendências e riscos:** decisões não resolvidas e o que ainda exige aprovação do Vinícius.
 
 Não substitua relatórios existentes sem verificar se pertencem a outra execução; não versione os relatórios ou artefatos automaticamente.
-
-## Auto-revisão obrigatória
-
-**Após implementar e testar, acione explicitamente a skill `watchtower-review` na mesma worktree**, com a Informal Spec e o escopo **das alterações produzidas nesta execução, inclusive arquivos não commitados e não rastreados**. Forneça o `implementation-report.md` como contexto; a Review deve avaliar o resultado independentemente de sua autoria, aplicando os overlays pertinentes. Se o ambiente permitir, prefira uma execução independente para obter um segundo contexto de avaliação; não presuma que apenas carregar outra skill crie uma nova execução do modelo.
-
-Se a Review corrigir código, atualize o relatório de implementação e as verificações afetadas para refletir o estado final. **Não inicie um ciclo infinito de revisões.** Se a skill não estiver disponível ou não puder executar, registre a revisão como **pendente**; nunca a apresente como concluída por ter feito apenas uma inspeção informal. A revisão automática não substitui a revisão final do Vinícius.
