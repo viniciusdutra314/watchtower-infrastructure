@@ -1,4 +1,4 @@
-#!/bin/env
+#!/bin/env python
 
 import wtpaths
 
