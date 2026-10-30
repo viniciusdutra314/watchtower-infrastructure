@@ -14,8 +14,7 @@ in
       terminal = "ghostty";
       menu = "rofi -terminal 'ghostty' -show combi -combi-modes drun#run -modes combi";
       workspaceLayout = "tabbed";
-      bars = [ ]; # A configuração da distribuição cuida da barra.
-
+      bars = [ ]; 
       window = {
         titlebar = false;
         border = 0;
@@ -28,7 +27,7 @@ in
       input."type:keyboard".xkb_layout = "br";
 
       output = {
-        "*".bg = "/home/vinicius/Pictures/Wallpaper/forest.jpg fill";
+        "*".bg = "${./wallpapers/forest.jpg} fill";
         "eDP-1" = {
           mode = "1920x1080@60Hz";
           position = "0 0";
@@ -88,7 +87,6 @@ in
         timeout 1800 'systemd-ac-power || systemctl suspend' \
         before-sleep 'swaylock -f'
 
-      # Mantém as configurações em camadas do Sway no Fedora.
       include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "''${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
     '';
   };
