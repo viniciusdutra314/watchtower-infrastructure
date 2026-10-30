@@ -8,6 +8,17 @@
     enable = true;
     package = pkgs.zed-editor;
   };
+  targets.genericLinux.enable = true; #make GPU acceleration work
+  programs.ghostty = {
+    enable = true;
+    package = pkgs.ghostty;
+    enableBashIntegration = true;
+    settings = {
+      background-opacity = 0.95;
+      font-size = 18;
+      term = "xterm-256color";
+    };
+  };
 
    home.file = {
     ".local/bin/wt-codium" = {
@@ -31,42 +42,43 @@
     mutableExtensionsDir = true;
   };
   home.packages = with pkgs; [
-    nixd
-    nil
-    nixfmt
-    git
-    git-lfs
-    gh
-    ripgrep
+    audacity
     bat
-    jujutsu
-    typst
-    just
-    rustup
-    uv
-    zig
-    jq
-    cloc
-    direnv
-    nix-direnv
-    hyperfine
-    zed-editor
-    vscodium
-    btop
-    tmux
-    tree
-    fastfetch
-
-    imagemagick
-    yt-dlp
-
-    saber
     bitwarden-desktop
     blanket
-    audacity
+    btop
+    cloc
+    direnv
+    fastfetch
+    gh
+    git
+    git-lfs
+    hyperfine
+    imagemagick
+    jq
+    jujutsu
+    just
     kdePackages.okular
+    nil
+    nix-direnv
+    nixd
+    nixfmt
+    ripgrep
+    rustup
+    saber
     telegram-desktop
+    tmux
+    tree
+    typst
+    uv
     vlc
+    vscodium
+    yt-dlp
+    zed-editor
+    zig
   ];
   programs.home-manager.enable = true;
+  imports = [
+  ./sway.nix
+];
 }
