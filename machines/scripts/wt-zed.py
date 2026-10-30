@@ -1,3 +1,5 @@
+#!/bin/env python
+
 import os
 import sys
 from pathlib import Path, PurePath
@@ -8,7 +10,6 @@ PATH_TRANSLATION: dict[Path, PurePath] = {
     Path("/home/vinicius/coding/watchtower-dev"): PurePath("/home/chloe/projects")
 }
 SSH_ALIAS = "watchtower-dev"
-
 
 def translate_path_and_launch_editor(
     editor: Literal["codium", "zed"],
@@ -25,8 +26,10 @@ def translate_path_and_launch_editor(
                 case "codium":
                     uri = f"vscode-remote://ssh-remote+{SSH_ALIAS}{remote_path}"
                     os.execvp(editor, [editor, "--folder-uri", uri, *args[1:]])
-
                 case "zed":
                     uri = f"ssh://{SSH_ALIAS}{remote_path}"
                     os.execvp(editor, [editor, uri, *args[1:]])
     os.execvp(editor, [editor, *args])
+
+
+translate_path_and_launch_editor("zeditor")
