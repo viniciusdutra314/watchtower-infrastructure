@@ -78,7 +78,13 @@
     zig
   ];
   programs.home-manager.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   imports = [
-  ./sway.nix
-];
+    ./sway.nix
+    ./zsh.nix
+    ./ssh.nix
+  ];
 }
