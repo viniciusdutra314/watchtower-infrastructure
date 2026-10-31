@@ -42,12 +42,13 @@ in
         "lid:on" = {
           locked = true;
           reload = true;
-          action = "output eDP-1 disable";
+          action = "output eDP-1 disable; output HDMI-A-2 position 0 0";
         };
+
         "lid:off" = {
           locked = true;
           reload = true;
-          action = "output eDP-1 enable";
+          action = "output eDP-1 enable; output HDMI-A-2 position 1920 0";
         };
       };
 
@@ -75,7 +76,7 @@ in
       keybindings = lib.mkOptionDefault {
         "${mod}+q" = "kill";
         "${mod}+Shift+q" = null;
-        "Print" = "exec flatpak run org.flameshot.Flameshot gui --raw | wl-copy --type image/png";
+        "Print" = "exec flameshot gui";
         "${mod}+Shift+p" = "exec swaymsg -t command";
       };
     };

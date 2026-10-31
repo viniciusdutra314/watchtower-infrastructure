@@ -88,6 +88,7 @@
     cloc
     direnv
     fastfetch
+    flameshot
     gh
     git
     git-lfs
