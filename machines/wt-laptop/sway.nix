@@ -1,4 +1,4 @@
-{lib, ... }:
+{ lib, ... }:
 
 let
   mod = "Mod4";
@@ -6,7 +6,7 @@ in
 {
   wayland.windowManager.sway = {
     enable = true;
-    package = null; 
+    package = null;
     systemd.enable = false;
 
     config = {
@@ -14,7 +14,7 @@ in
       terminal = "ghostty";
       menu = "rofi -terminal 'ghostty' -show combi -combi-modes drun#run -modes combi";
       workspaceLayout = "tabbed";
-      bars = [ ]; 
+      bars = [ ];
       window = {
         titlebar = false;
         border = 0;
@@ -66,9 +66,9 @@ in
 
       startup = map (command: { inherit command; }) [
         "firefox"
-        "flatpak run org.mozilla.thunderbird_esr"
-        "flatpak run org.telegram.desktop"
-        "flatpak run com.rtosta.zapzap"
+        "thunderbird"
+        "Telegram"
+        "zapzap"
         "ai-voice-usage"
       ];
 
