@@ -47,6 +47,7 @@
   };
 
   targets.genericLinux.enable = true; # make GPU acceleration work
+  home.sessionVariables.GTK_IM_MODULE = "simple"; # make ~ work in ghostty
   programs.ghostty = {
     enable = true;
     package = pkgs.ghostty;
@@ -114,6 +115,7 @@
     uv
     vlc
     yt-dlp
+    woomer
     zapzap
     zig
     zotero
@@ -127,5 +129,6 @@
     ./sway.nix
     ./zsh.nix
     ./ssh.nix
+    ./waybar.nix
   ];
 }

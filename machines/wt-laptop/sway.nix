@@ -74,9 +74,11 @@ in
       ];
 
       keybindings = lib.mkOptionDefault {
+        "${mod}+Return" = "exec env GTK_IM_MODULE=simple ghostty --gtk-single-instance=false";
         "${mod}+q" = "kill";
         "${mod}+Shift+q" = null;
         "Print" = "exec flameshot gui";
+        "${mod}+z" = "exec woomer";
         "${mod}+Shift+p" = "exec swaymsg -t command";
       };
     };
