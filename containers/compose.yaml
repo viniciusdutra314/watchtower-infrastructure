@@ -1,9 +1,11 @@
 name: watchtower-services
 
 include:
-    - path: ./compose.tailscale.yaml
-      env_file: /mnt/wt-core/secrets/.env
-    - path: ./compose.arr.yaml
-      env_file: /mnt/wt-core/secrets/.env
-    - path: ./compose.immich.yaml
-      env_file: /mnt/wt-core/secrets/.env
+  - path: ./compose.tailscale.yaml
+    env_file: /mnt/wt-core/secrets/.env
+  - path: ./compose.arr.yaml
+    env_file: /mnt/wt-core/secrets/.env
+  - path: ./compose.immich.yaml
+    env_file: /mnt/wt-core/secrets/.env
+  - path: ./compose.miscellaneous.yaml
+    env_file: /mnt/wt-core/secrets/.env

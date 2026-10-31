@@ -1,0 +1,16 @@
+services:
+  radicale:
+    image: ghcr.io/kozea/radicale:stable
+    ports:
+      - "5232:5232"
+    volumes:
+      - type: bind
+        source: ${STATE_ROOT}/radicale/config
+        target: /etc/radicale
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${STATE_ROOT}/radicale/data
+        target: /var/lib/radicale
+        bind:
+          create_host_path: false
