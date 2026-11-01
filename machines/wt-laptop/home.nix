@@ -45,7 +45,18 @@
       };
     };
   };
-
+  programs.thunderbird = {
+    enable = true;
+    settings = {
+      "mailnews.oauth.useExternalBrowser" = false;
+      "mailnews.oauth.usePrivateBrowser" = true;
+      "mailnews.oauth.useSchemeRedirect" = false;
+    };
+  };
+  xdg.configFile."sway/config.d/90-bar.conf".text = ''
+    # Waybar iniciada pelo Home Manager/Sway.
+    # Desativa a barra padrão do Fedora.
+  '';
   targets.genericLinux.enable = true; # make GPU acceleration work
   home.sessionVariables.GTK_IM_MODULE = "simple"; # make ~ work in ghostty
   programs.ghostty = {

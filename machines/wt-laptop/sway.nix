@@ -72,6 +72,7 @@ in
         "zapzap"
         "ai-voice-usage"
       ];
+      
 
       keybindings = lib.mkOptionDefault {
         "${mod}+Return" = "exec env GTK_IM_MODULE=simple ghostty --gtk-single-instance=false";
