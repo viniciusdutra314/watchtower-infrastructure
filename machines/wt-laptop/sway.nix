@@ -1,9 +1,42 @@
-{ lib, ... }:
+{pkgs,lib, ... }:
 
 let
   mod = "Mod4";
 in
 {
+   programs.fuzzel = {
+    enable = true;
+
+    settings = {
+      main = {
+        "icons-enabled" = true;
+        width = 45;
+        lines = 10;
+        "horizontal-pad" = 16;
+        "vertical-pad" = 12;
+        "inner-pad" = 10;
+        "line-height" = 22;
+        border-radius = 12;
+      };
+
+      colors = {
+        background = "1e1e2ee6";
+        text = "cdd6f4ff";
+        prompt = "89b4faff";
+        placeholder = "6c7086ff";
+        input = "cdd6f4ff";
+        match = "f9e2afff";
+        selection = "313244ff";
+        "selection-text" = "cdd6f4ff";
+        "selection-match" = "f38ba8ff";
+        border = "89b4faff";
+      };
+
+      border = {
+        width = 2;
+      };
+    };
+  };
   wayland.windowManager.sway = {
     enable = true;
     package = null;
@@ -12,7 +45,7 @@ in
     config = {
       modifier = mod;
       terminal = "ghostty";
-      menu = "rofi -terminal 'ghostty' -show combi -combi-modes drun#run -modes combi";
+      menu = "${pkgs.fuzzel}/bin/fuzzel";
       workspaceLayout = "tabbed";
       bars = [ ];
       window = {

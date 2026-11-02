@@ -10,19 +10,22 @@
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.8.0";
   };
-
+  
   outputs =
     {
       nixpkgs,
       home-manager,
       system-manager,
+      nix-flatpak,
       ...
     }:
     {
       homeConfigurations.wt-laptop = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [
+           nix-flatpak.homeManagerModules.nix-flatpak
           ./wt-laptop/home.nix
         ];
       };

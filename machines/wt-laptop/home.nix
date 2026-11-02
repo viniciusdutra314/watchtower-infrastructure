@@ -6,7 +6,7 @@
       "firefox-esr-140-bin-unwrapped-140.17.0esr"
     ];
   };
-
+  news.display = "silent";
   home.username = "vinicius";
   home.homeDirectory = "/home/vinicius";
   home.stateVersion = "26.05";
@@ -45,14 +45,6 @@
       };
     };
   };
-  programs.thunderbird = {
-    enable = true;
-    settings = {
-      "mailnews.oauth.useExternalBrowser" = false;
-      "mailnews.oauth.usePrivateBrowser" = true;
-      "mailnews.oauth.useSchemeRedirect" = false;
-    };
-  };
   xdg.configFile."sway/config.d/90-bar.conf".text = ''
     # Waybar iniciada pelo Home Manager/Sway.
     # Desativa a barra padrão do Fedora.
@@ -84,6 +76,7 @@
 
   home.sessionPath = [
     "$HOME/.local/bin"
+    "$HOME/.juliaup/bin"
   ];
 
   programs.vscodium = {
@@ -100,10 +93,12 @@
     cloc
     direnv
     fastfetch
+    flatpak
     flameshot
     gh
     git
     git-lfs
+    gnome-clocks
     hyperfine
     imagemagick
     jq
@@ -117,9 +112,7 @@
     ripgrep
     rustup
     saber
-    spotify
     telegram-desktop
-    thunderbird
     tmux
     tree
     typst
@@ -128,9 +121,11 @@
     yt-dlp
     woomer
     zapzap
+    gnome-clocks
     zig
     zotero
   ];
+  
   programs.home-manager.enable = true;
   programs.direnv = {
     enable = true;
@@ -141,5 +136,7 @@
     ./zsh.nix
     ./ssh.nix
     ./waybar.nix
+    
+    ./flatpaks.nix
   ];
 }
