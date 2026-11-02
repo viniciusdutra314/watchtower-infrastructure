@@ -50,7 +50,7 @@ in
       bars = [ ];
       window = {
         titlebar = false;
-        border = 0;
+        border = 3;
         hideEdgeBorders = "--i3 both";
       };
       gaps = {
@@ -90,7 +90,11 @@ in
           { app_id = "org.mozilla.firefox"; }
           { app_id = "ai-voice-usage"; }
         ];
-        "9" = [ { app_id = "org.mozilla.thunderbird_esr"; } ];
+        "2" = [
+          { app_id = "dev.zed.Zed"; }
+          { app_id = "codium"; } 
+        ];
+        "9" = [ { app_id = "org.mozilla.thunderbird"; } ];
         "10" = [
           { app_id = "org.telegram.desktop"; }
           { app_id = "com.rtosta.zapzap"; }
@@ -100,7 +104,7 @@ in
 
       startup = map (command: { inherit command; }) [
         "firefox"
-        "thunderbird"
+        "flatpak run org.mozilla.thunderbird"
         "Telegram"
         "zapzap"
         "ai-voice-usage"

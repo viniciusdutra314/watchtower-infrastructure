@@ -30,7 +30,23 @@ in
       spacing = 6;
 
       modules-left = [ "sway/workspaces" ];
-      modules-center = [ "sway/window" ];
+      modules-center = [ "mpris" ];
+     mpris = {
+  format = "{status_icon} {title} — {artist}";
+  "format-paused" = "{status_icon} {title} — {artist}";
+
+  "status-icons" = {
+    playing = "♫";
+    paused = "⏸";
+    stopped = "⏹";
+  };
+
+  "max-length" = 45;
+  "hide-on-paused" = false;
+
+  "ignored-players" = [ "firefox" ];
+};
+
       modules-right = [
         "custom/watchtower"
         "cpu"
@@ -109,13 +125,13 @@ in
       "clock#date" = {
         format = " {0:%d}${punctuation "/"}{0:%m}${punctuation "/"}{0:%Y}";
         tooltip-format = "{:%A, %d de %B de %Y}";
-        on-click = "thunderbird -calendar";
+        on-click = "flatpak run org.mozilla.thunderbird -calendar";
       };
 
       "clock#time" = {
         format = " {0:%H}${punctuation ":"}{0:%M}";
         tooltip = false;
-        on-click = "thunderbird -calendar";
+        on-click = "flatpak run org.mozilla.thunderbird -calendar";
       };
     };
 

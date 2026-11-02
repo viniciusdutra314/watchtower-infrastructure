@@ -99,6 +99,7 @@
     git
     git-lfs
     gnome-clocks
+    gnome-network-displays
     hyperfine
     imagemagick
     jq
@@ -136,7 +137,7 @@
     ./zsh.nix
     ./ssh.nix
     ./waybar.nix
-    
+    ./commands.nix    
     ./flatpaks.nix
   ];
 }
