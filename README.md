@@ -1,28 +1,18 @@
-
-> *“Watchtower is officially online...”*
+> _“Watchtower is officially online...”_
 
 <p align="center">
   <img src="assets/watchtower-banner.jpg" alt="Watchtower" width="800">
 </p>
 
-**Watchtower Infrastructure** is my portable home-server setup: a small,
-cross-platform Python orchestration layer for running virtual machines,
-containers and services from a single portable SSD.
+**Watchtower Up** is my personal infrastructure configuration, built around **Nix Flakes**, **NixOS**, and **Home Manager** to keep machines and development environments reproducible.
 
-The basic idea is simple: plug the SSD into a machine, start the Watchtower,
-and the infrastructure comes with it.
+It manages configurations for my home server, virtual machines, and personal computers. The server also hosts docker containers, with declarative configurations for easy deployment and maintenance. Everything is versioned in Git, while persistent data and secrets are kept separate from the repository.
 
-🖥️ **QEMU** runs the virtual machines.  
-📦 **Docker** provides the containerized services.  
-🛰️ **`watchtowerctl`** ties everything together.
+### Chloe — AI Agent
 
-The Python tooling handles host-specific configuration and provides a common
-control layer across different machines and operating systems — currently
-Linux and Windows.
+Chloe is the AI companion and development assistant integrated into the Watchtower ecosystem.
 
-The project is built around keeping **configuration separate from state**.
-NixOS configuration, VM and container definitions, metadata and orchestration
-code are versioned here, while large virtual disks, persistent container data
-and secrets deliberately live outside the Git repository.
+The chloe/ directory contains the configuration and customization of AI agents, including reusable skills, behavioral instructions, and workflows for software development, research, and infrastructure management.
 
-
+> [!NOTE]
+> Fun fact: Watchtower is a reference to the TV series Smallville, where Chloe Sullivan operates the Watchtower as a headquarters for coordinating the team.

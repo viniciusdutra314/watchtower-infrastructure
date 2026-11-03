@@ -57,6 +57,8 @@
     enableZshIntegration = true;
     settings = {
       background-opacity = 0.95;
+      working-directory = "${config.home.homeDirectory}/watchtower-up/machines";
+      window-inherit-working-directory = false;
       font-size = 18;
       term = "xterm-256color";
     };
@@ -126,7 +128,7 @@
     zig
     zotero
   ];
-  
+
   programs.home-manager.enable = true;
   programs.direnv = {
     enable = true;
@@ -137,7 +139,7 @@
     ./zsh.nix
     ./ssh.nix
     ./waybar.nix
-    ./commands.nix    
+    ./commands.nix
     ./flatpaks.nix
   ];
 }
