@@ -7,9 +7,9 @@ from typing import Literal, NoReturn
 
 # local => remote
 PATH_TRANSLATION: dict[Path, PurePath] = {
-    Path("/home/vinicius/coding/watchtower-dev"): PurePath("/home/chloe/projects")
+    Path("/home/vinicius/wt-dev"): PurePath("/home/chloe/projects")
 }
-SSH_ALIAS = "watchtower-dev"
+SSH_ALIAS = "wt-dev"
 
 
 def translate_path_and_launch_editor(
@@ -31,7 +31,6 @@ def translate_path_and_launch_editor(
                     uri = f"ssh://{SSH_ALIAS}{remote_path}"
                     os.execvp(editor, [editor, uri, *args[1:]])
     os.execvp(editor, [editor, *args])
-
 
 
 translate_path_and_launch_editor("codium")

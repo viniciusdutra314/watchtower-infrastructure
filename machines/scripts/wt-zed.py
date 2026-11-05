@@ -7,12 +7,13 @@ from typing import Literal, NoReturn
 
 # local => remote
 PATH_TRANSLATION: dict[Path, PurePath] = {
-    Path("/home/vinicius/coding/watchtower-dev"): PurePath("/home/chloe/projects")
+    Path("/home/vinicius/wt-dev"): PurePath("/home/chloe/projects")
 }
-SSH_ALIAS = "watchtower-dev"
+SSH_ALIAS = "wt-dev"
+
 
 def translate_path_and_launch_editor(
-    editor: Literal["codium", "zed"],
+    editor: Literal["codium", "zeditor"],
 ) -> NoReturn:
     args = sys.argv[1:]
     if len(sys.argv) != 1:
@@ -26,7 +27,7 @@ def translate_path_and_launch_editor(
                 case "codium":
                     uri = f"vscode-remote://ssh-remote+{SSH_ALIAS}{remote_path}"
                     os.execvp(editor, [editor, "--folder-uri", uri, *args[1:]])
-                case "zed":
+                case "zeditor":
                     uri = f"ssh://{SSH_ALIAS}{remote_path}"
                     os.execvp(editor, [editor, uri, *args[1:]])
     os.execvp(editor, [editor, *args])

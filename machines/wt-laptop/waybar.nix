@@ -108,7 +108,7 @@ in
         format = "{icon} {capacity}${punctuation "%"}";
         format-charging = " {icon} {capacity}${punctuation "%"}";
         format-plugged = " {icon} {capacity}${punctuation "%"}";
-        format-full = " {capacity}${punctuation "%"}";
+        format-full = "";
         format-icons = [
           ""
           ""
@@ -187,6 +187,10 @@ in
       #battery { color: @green; }
       #battery.charging { color: @yellow; }
       #battery.plugged { color: @blue; }
+      #battery.full {
+       padding: 0;
+       margin: 0;
+      }
 
       #power-profiles-daemon.power-saver { color: @green; }
       #power-profiles-daemon.balanced { color: @blue; }

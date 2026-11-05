@@ -1,4 +1,4 @@
-name: watchtower-services
+name: watchtower
 
 include:
   - path: ./compose.tailscale.yaml
